@@ -16,7 +16,7 @@ A dockerised version of yii2 advance template
 - Yii2: [link](http://www.yiiframework.com/doc-2.0/guide-start-installation.html#installing-via-composer).
 
 ## Setup guidelines
-You can follow [SETUP.md](SETUP.md) for deploying CMS2.0. The Dockerised setup is the preferred mode of installation. You can however set all the components up yourself.
+You can follow [SETUP.md](SETUP.md) for deploying docker-yii2. The Dockerised setup is the preferred mode of installation. You can however set all the components up yourself.
 
 ## Contribution guidelines
 
