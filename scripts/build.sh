@@ -26,4 +26,4 @@ do
 done
 
 echo ">>> Copying db settings"
-cp /config/main-local-common.php /cms/common/config/main-local.php
+cp /config/main.php /src/common/config/main-local.php
