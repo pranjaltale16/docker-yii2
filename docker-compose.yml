@@ -59,22 +59,6 @@ services:
     links:
       - database
 
-  build:
-    # Name of the container
-    container_name: yii2-composer
-
-    # Base image to be used
-    image: composer:1.8
-
-    # Mount the volumens on the php container
-    volumes:
-      - ./src:/src
-
-    # Depends on the services'
-    depends_on:
-      - database
-      - server
-
 volumes:
   database:
 

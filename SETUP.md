@@ -16,6 +16,6 @@ This document outlines the process of deploying docker-yii2 project.
 
 1. Run `docker-compose up -d` to start yii2 application in background
 2. Run `docker exec -it yii2-apache bash /scripts/initialize.sh` to initialize the project
-3. Run `docker exec -it yii2-composer bash /scripts/build.sh` to install dependencies
+3. Run `bash scripts/build.sh` to install dependencies
 4. Add `127.0.0.1    frontend.in` and `127.0.0.1    backend.in`  to `/etc/hosts`
 5. Visit [backend](backend.in:8088) to see the project running.
