@@ -1,29 +1,8 @@
-#!/bin/bash
-
-echo ">>> cd src"
+echo ">>> cd /src/"
 cd /src/
 
-ENV_TYPE='Please enter your choice: '
-options=("Development" "Production" "Quit")
-select opt in "${options[@]}"
-do
-    case $opt in
-        "Development")
-            echo ">>> Setting Development env"
-            ./init --env=Development --overwrite=All
-            break        
-            ;;
-        "Production")
-            echo ">>> Setting Production env"
-            ./init --env=Production --overwrite=All
-            break        
-            ;;
-        "Quit")
-            break
-            ;;
-        *) echo "invalid option $REPLY";;
-    esac
-done
+echo ">>> composer update"
+composer update
 
-echo ">>> Copying db settings"
-cp /config/main.php /src/common/config/main-local.php
+echo ">>> composer install"
+composer install

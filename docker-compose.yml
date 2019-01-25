@@ -6,7 +6,7 @@ services:
 
   database:
     # Name of the container
-    container_name: psql
+    container_name: yii2-psql
 
     # Use the PostgreSQL image from Alpine Linux as is
     image: postgres:alpine
@@ -30,7 +30,7 @@ services:
 
   server:
     # Name of the container
-    container_name: apache
+    container_name: yii2-apache
 
     # Base image to be used
     image: pranjaltale16/docker-yii2
@@ -61,7 +61,7 @@ services:
 
   build:
     # Name of the container
-    container_name: composer
+    container_name: yii2-composer
 
     # Base image to be used
     image: composer:1.8
