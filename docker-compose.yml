@@ -1,0 +1,84 @@
+# Using version 3.5 of the docker-compose standard
+version: "3.5"
+
+# A service is a set of containers balancing the total load
+services:
+
+  database:
+    # Name of the container
+    container_name: psql
+
+    # Use the PostgreSQL image from Alpine Linux as is
+    image: postgres:alpine
+
+    # To restart the container when it crashes
+    restart: always
+
+    # Set the environment variable
+    env_file:
+      - config/database.env
+
+    # Expose the port 5432 used by postgreSQL
+    # This port is not exposed to host
+    expose:
+      - "5432"
+
+    # Mount the volumes on the database container
+    volumes:
+      # Mount 'database' as the place where postgreSQL stores all its data
+      - database:/var/lib/postgresql/data
+
+  server:
+    # Name of the container
+    container_name: apache
+
+    # Base image to be used
+    image: pranjaltale16/docker-yii2
+
+    # To restart the container when it crashes
+    restart: always
+
+    # Environment file
+    env_file:
+      - config/apache.env
+
+    # Map 8088 port of host machine to apache
+    ports:
+      - "8088:80"
+
+    # Mount the volumens on the php container
+    volumes:
+      - ./src:/src
+      - ./config/:/config
+      - ./scripts:/scripts
+      
+    # Depends on the services'
+    depends_on:
+      - database
+
+    links:
+      - database
+
+  build:
+    # Name of the container
+    container_name: composer
+
+    # Base image to be used
+    image: composer:1.8
+
+    # Mount the volumens on the php container
+    volumes:
+      - ./src:/src
+
+    # Depends on the services'
+    depends_on:
+      - database
+      - server
+
+volumes:
+  database:
+
+networks:
+  default:
+    name: yii2-default
+
